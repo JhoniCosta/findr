@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "findr"
+version = "1.0.0"
+description = "Spotlight-like search bar for Ubuntu/GNOME (Alt+Space)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []  # PyGObject comes from the distro: sudo apt install python3-gi gir1.2-gtk-3.0
+
+[project.scripts]
+findr = "findr.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"findr.ui" = ["style.css"]

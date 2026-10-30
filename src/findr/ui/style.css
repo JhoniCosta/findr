@@ -1,0 +1,70 @@
+/* Findr — Spotlight-like look on top of the active GTK theme. */
+
+window.findr-window {
+    background-color: transparent;
+}
+
+window.findr-window.findr-overlay {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.findr-panel {
+    background-color: alpha(@theme_base_color, 0.97);
+    border: 1px solid alpha(@theme_fg_color, 0.12);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+}
+
+window.findr-window:not(.findr-overlay) .findr-panel {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.findr-search {
+    font-size: 22px;
+    min-height: 48px;
+    padding: 0 10px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.findr-results,
+.findr-panel scrolledwindow,
+.findr-panel viewport {
+    background: transparent;
+    border: none;
+}
+
+.findr-section {
+    font-size: 11px;
+    font-weight: bold;
+    opacity: 0.55;
+    padding: 10px 12px 4px 12px;
+}
+
+.findr-row {
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.findr-row:selected {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+}
+
+.findr-title {
+    font-size: 14px;
+}
+
+.findr-subtitle {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+.findr-footer {
+    font-size: 11px;
+    opacity: 0.5;
+    padding: 6px 12px 2px 12px;
+}

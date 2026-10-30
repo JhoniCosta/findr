@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Findr
+Comment=Mantém a barra de busca Findr pronta para o Alt+Space
+Exec=findr --daemon
+Icon=system-search
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

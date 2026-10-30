@@ -1,0 +1,5 @@
+#!/bin/sh
+# Runs Findr from this checkout (or from the copy made by install.sh).
+SELF_DIR=$(dirname "$(readlink -f "$0")")
+export PYTHONPATH="$SELF_DIR/../src${PYTHONPATH:+:$PYTHONPATH}"
+exec python3 -m findr "$@"

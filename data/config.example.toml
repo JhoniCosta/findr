@@ -1,0 +1,24 @@
+# Copie para ~/.config/findr/config.toml e ajuste. Todas as chaves são opcionais.
+
+# Atalho global (sintaxe GSettings). Rode `findr --install-hotkey` após mudar.
+hotkey = "<Alt>space"
+
+# Máximo de resultados por seção (Aplicativos, Pastas, Documentos...).
+max_results_per_kind = 6
+
+# Pastas indexadas para busca de arquivos.
+file_roots = ["~"]
+excluded_dirs = ["node_modules", "__pycache__", "venv", ".venv", "dist", "build", "target", "snap", ".git"]
+include_hidden_files = false
+max_index_depth = 7
+max_indexed_entries = 250000
+index_refresh_minutes = 10
+
+# Pesquisa na web quando nada local resolve. {query} é substituído pelo texto.
+web_search_url = "https://duckduckgo.com/?q={query}"
+
+# Esconde a barra quando ela perde o foco.
+hide_on_focus_loss = true
+
+# Camada translúcida (janela maximizada) com o painel no terço superior (estilo Spotlight).
+overlay = true

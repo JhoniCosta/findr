@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Findr
+GenericName=Busca
+Comment=Barra de busca de aplicativos e arquivos estilo Spotlight (Alt+Space)
+Keywords=search;launcher;spotlight;finder;busca;
+Exec=findr
+Icon=system-search
+Terminal=false
+Categories=Utility;
+StartupNotify=false

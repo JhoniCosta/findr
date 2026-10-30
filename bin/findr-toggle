@@ -1,0 +1,23 @@
+#!/bin/sh
+# Shows/hides the Findr search bar. GNOME runs this on Alt+Space.
+#
+# Fast path: activate the running instance's "toggle" GAction over D-Bus, which
+# avoids starting a Python interpreter on every key press. The compositor's
+# activation token is forwarded so the window is allowed to take focus.
+APP_ID="io.github.findr.Findr"
+OBJECT_PATH="/io/github/findr/Findr"
+TOKEN="${XDG_ACTIVATION_TOKEN:-$DESKTOP_STARTUP_ID}"
+
+PLATFORM_DATA="{}"
+if [ -n "$TOKEN" ]; then
+    PLATFORM_DATA="{'activation-token': <'$TOKEN'>, 'desktop-startup-id': <'$TOKEN'>}"
+fi
+
+if gdbus call --session --dest "$APP_ID" --object-path "$OBJECT_PATH" \
+        --method org.gtk.Actions.Activate toggle "[]" "$PLATFORM_DATA" >/dev/null 2>&1; then
+    exit 0
+fi
+
+# Not running yet: start it, already showing the bar.
+SELF_DIR=$(dirname "$(readlink -f "$0")")
+exec "$SELF_DIR/findr" --toggle
