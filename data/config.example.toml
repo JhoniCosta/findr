@@ -15,7 +15,7 @@ max_indexed_entries = 250000
 index_refresh_minutes = 10
 
 # Pesquisa na web quando nada local resolve. {query} é substituído pelo texto.
-web_search_url = "https://duckduckgo.com/?q={query}"
+web_search_url = "https://www.google.com/search?q={query}"
 
 # Esconde a barra quando ela perde o foco.
 hide_on_focus_loss = true

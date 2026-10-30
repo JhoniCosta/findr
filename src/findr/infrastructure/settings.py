@@ -25,7 +25,7 @@ class Settings:
     max_index_depth: int = 7
     max_indexed_entries: int = 250_000
     index_refresh_minutes: int = 10
-    web_search_url: str = "https://duckduckgo.com/?q={query}"
+    web_search_url: str = "https://www.google.com/search?q={query}"
     hide_on_focus_loss: bool = True
     overlay: bool = True
 
