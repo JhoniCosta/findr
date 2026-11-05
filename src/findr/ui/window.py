@@ -67,6 +67,9 @@ class LauncherWindow(Gtk.ApplicationWindow):
     # ----- Public commands ------------------------------------------------
 
     def summon(self) -> None:
+        # Every summon starts from a blank query, before the first frame is
+        # painted, so the previous search never flashes on screen.
+        self._reset_query()
         if self._overlay:
             # Maximize, never fullscreen: Mutter paints an opaque black backdrop
             # behind translucent fullscreen Wayland surfaces.
@@ -75,7 +78,6 @@ class LauncherWindow(Gtk.ApplicationWindow):
         self.show()
         self.present()
         self._entry.grab_focus()
-        self._entry.select_region(0, -1)
 
     def toggle(self) -> None:
         if self.is_visible():
@@ -215,6 +217,13 @@ class LauncherWindow(Gtk.ApplicationWindow):
         self._footer.set_text(hint + "     Esc fechar")
 
     # ----- Helpers ---------------------------------------------------------
+
+    def _reset_query(self) -> None:
+        self._entry.set_text("")
+        # Notify the controller synchronously instead of relying on the entry's
+        # "search-changed" signal: this cancels any debounced/in-flight search
+        # (it bumps the generation) and clears the results list right away.
+        self._controller.query_changed("")
 
     def _fit_results_height(self) -> None:
         """Grow/shrink with the results: GTK 3 windows only honour *minimum* size changes."""
